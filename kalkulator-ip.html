@@ -1,0 +1,289 @@
+
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Kalkulator u Michała</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">	
+        <link rel="shortcut icon" type="image/x-icon" href="img/4.ico">	
+       <link href='https://fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'>
+       <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>	
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/owl.carousel.css">
+        <link rel="stylesheet" href="css/owl.theme.css">
+        <link rel="stylesheet" href="css/owl.transitions.css">
+		<link rel="stylesheet" href="css/nivo-slider.css" type="text/css" />
+        <link rel="stylesheet" href="css/meanmenu.min.css">
+        <link rel="stylesheet" href="css/jquery-ui.css">
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/responsive.css">
+		<link href="css/wicart.css" type="text/css" rel="stylesheet">
+		<script src="http://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript" ></script>
+		<script src="js/wicart.js"  type="text/javascript" ></script>
+		<script src="...js" charset="UTF-8"></script> 
+<body>
+<!-- HEADER-TOP START -->
+			<div class="header-top hidden-xs">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div class="top-menu">
+									
+
+
+								<p class="welcome-msg">Ta strona też zrobiona dla pana Krupy.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+										<div class="support-text">
+											<h1 class="zero gfont-1">Kalkulator IP</h1>
+										</div>
+<script src="../j.maxmind.com/app/geoip.js" type="text/javascript"></script>  
+<gcript src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAActew96GN72hkuAEZRJwOdRTTjwIyki--ZigcTGpUNnK6eFlxChRpQ0o_okTHWNbvObeDupqbon19-w" type="text/javascript"></script> 
+<script type="text/javascript">  
+  
+var map;  
+var lat = geoip_latitude();  
+var lng = geoip_longitude();  
+var kraj = geoip_country_name();  
+var miejscowosc = geoip_city();  
+var region = geoip_region_name();  
+  
+     function load() {  
+       if (GBrowserIsCompatible()) {  
+        var map = new GMap2(document.getElementById("map"));  
+        map.setCenter(new GLatLng(lat, lng), 9);  
+  
+ 
+    var info = 'Kraj:<b> '+kraj+'</b><br />';  
+    info += 'Miejscowość:<b> '+miejscowosc+'</b><br />';  
+    info += 'Region:<b> '+region+'</b><br />';  
+    info += 'Szerokość:<b> '+lat+'</b><br />';  
+    info += 'Długość:<b> '+lng+'</b>';
+    var point = new GLatLng(lat, lng);  
+    var marker = new GMarker(point);  
+  
+    GEvent.addListener(marker, "click", function() {  
+      marker.openInfoWindowHtml(info);  
+    });  
+    map.addOverlay(marker);  
+    marker.openInfoWindowHtml(info);  
+  
+       }  
+     }  
+  
+</script>
+
+<!--ipt type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20486332-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</scri-->
+
+
+
+</head><body onload="load()" onunload="GUnload()">
+
+<div id="pagewrapper">
+	
+	<div id="content">
+                    
+<div id="calculator"><script src="js/calc.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		
+	window.onload = function() {
+		
+		vIp = document.getElementById("valid_ip");
+		vMask = document.getElementById("valid_mask");
+		var masklinks = document.getElementById("masklinks");
+		var spec_ip1 = document.getElementById("spec_ip1");
+		var spec_ip2 = document.getElementById("spec_ip2");
+		var styl1 = spec_ip1.style.display;
+		var styl2 = spec_ip2.style.display;
+		
+		function calculator() {
+		
+			var fir = parseInt(document.getElementsByName("ip_first")[0].value);
+			var sec = parseInt(document.getElementsByName("ip_second")[0].value);
+			var tri = parseInt(document.getElementsByName("ip_third")[0].value);
+			var four = parseInt(document.getElementsByName("ip_fourth")[0].value);
+			
+			var firm = parseInt(document.getElementsByName("mask_first")[0].value);
+			var secm = parseInt(document.getElementsByName("mask_second")[0].value);
+			var trim = parseInt(document.getElementsByName("mask_third")[0].value);
+			var fourm = parseInt(document.getElementsByName("mask_fourth")[0].value);
+			
+			if (valIp(fir,sec,tri,four,vIp)) {
+				if (valMask(firm,secm,trim,fourm,vMask)) {
+				
+					if ((firm == 255) && (secm == 255) && (trim == 255) && (fourm == 255)) {
+						vMask.innerHTML = "Pojedyńczy host a nie sieć";
+						clearForm();
+						masklinks.innerHTML = "";
+						return;
+					}
+					var ip = document.getElementsByName("adres_ip")[0];
+					ip.value = fir + "." + sec + "." + tri + "." + four;
+					
+					var ipbin = document.getElementById("ipbin");
+					var temp = padTextPrefix(toBin(fir),"0", 8)+"."+padTextPrefix(toBin(sec),"0", 8)+"."+padTextPrefix(toBin(tri),"0", 8)+"."+padTextPrefix(toBin(four),"0", 8);
+					var maska = calcMask2Len(firm,secm,trim,fourm);
+					
+					colorBin(temp,maska,"#001e4c","#007506",ipbin);
+					
+					var maskbin = document.getElementById("maskbin");
+					var temp = padTextPrefix(toBin(firm),"0", 8)+"."+padTextPrefix(toBin(secm),"0", 8)+"."+padTextPrefix(toBin(trim),"0", 8)+"."+padTextPrefix(toBin(fourm),"0", 8);
+					
+					colorBin(temp,maska,"#c4c4c4","#a50000",maskbin);
+					
+					
+					var mask = document.getElementsByName("mask")[0];
+					mask.value = firm + "." + secm + "." + trim + "." + fourm; 
+					
+					var as = document.getElementsByName("as")[0];
+					
+					var as1 = fir & firm;
+					var as2 = sec & secm;
+					var as3 = tri & trim;
+					var as4 = four & fourm;
+					
+					as.value = as1 + "." + as2 + "." + as3 + "." + as4; 
+					
+					var asbin = document.getElementById("asbin");
+					var temp = padTextPrefix(toBin(as1),"0", 8)+"."+padTextPrefix(toBin(as2),"0", 8)+"."+padTextPrefix(toBin(as3),"0", 8)+"."+padTextPrefix(toBin(as4),"0", 8);
+					
+					colorBin(temp,maska,"#001e4c","#a50000",asbin);
+					
+					var bro = document.getElementsByName("broad")[0];
+					
+					var bro1 = fir | (firm ^ 255);
+					var bro2 = sec | (secm ^ 255);
+					var bro3 = tri | (trim ^ 255);
+					var bro4 = four | (fourm ^ 255);
+					
+					bro.value = bro1 + "." + bro2 + "." + bro3 + "." + bro4;
+					
+					var brobin = document.getElementById("brobin");
+					var temp = padTextPrefix(toBin(bro1),"0", 8)+"."+padTextPrefix(toBin(bro2),"0", 8)+"."+padTextPrefix(toBin(bro3),"0", 8)+"."+padTextPrefix(toBin(bro4),"0", 8);
+					
+					colorBin(temp,maska,"#001e4c","#c4c4c4",brobin);
+					var tempmin = padTextPrefix(toBin(as1),"0", 8) + padTextPrefix(toBin(as2),"0", 8) + padTextPrefix(toBin(as3),"0", 8) + padTextPrefix(toBin(as4+1),"0", 8);
+					tempmin = parseInt(tempmin, 2); 
+					var tempmax = padTextPrefix(toBin(bro1),"0", 8) + padTextPrefix(toBin(bro2),"0", 8) + padTextPrefix(toBin(bro3),"0", 8) + padTextPrefix(toBin(bro4-1),"0", 8);
+					tempmax = parseInt(tempmax, 2); 
+					
+					var hostnet = document.getElementsByName("host_net")[0];
+					
+					
+					if ((tempmax - tempmin + 1)!=0) {
+						spec_ip1.style.display = styl1;
+						spec_ip2.style.display = styl2;
+						hostnet.value = tempmax - tempmin + 1;
+						var hostmin = document.getElementsByName("host_first")[0];
+						hostmin.value = as1 + "." + as2 + "." + as3 + "." + (as4+1); 
+						
+						var host1bin = document.getElementById("host1bin");
+						var temp = padTextPrefix(toBin(as1),"0", 8)+"."+padTextPrefix(toBin(as2),"0", 8)+"."+padTextPrefix(toBin(as3),"0", 8)+"."+padTextPrefix(toBin((as4+1)),"0", 8);
+					
+						colorBin(temp,maska,"#001e4c","#c4c4c4",host1bin);
+						
+						var hostmax = document.getElementsByName("host_last")[0];
+						hostmax.value = bro1 + "." + bro2 + "." + bro3 + "." + (bro4-1);
+						
+						var host2bin = document.getElementById("host2bin");
+						var temp = padTextPrefix(toBin(bro1),"0", 8)+"."+padTextPrefix(toBin(bro2),"0", 8)+"."+padTextPrefix(toBin(bro3),"0", 8)+"."+padTextPrefix(toBin((bro4-1)),"0", 8);
+					
+						colorBin(temp,maska,"#001e4c","#c4c4c4",host2bin);
+					}
+					else {
+						spec_ip1.style.display = "none";
+						spec_ip2.style.display = "none";
+						hostnet.value = "punkt-punkt";
+					}
+
+				}
+				else {
+					clearForm();
+					masklinks.innerHTML = "";
+					return;
+				}
+			}
+			else {
+				clearForm();
+				masklinks.innerHTML = "";
+				return;
+			}
+		}
+		
+		var check = document.getElementsByName("oblicz")[0];
+		check.onclick = calculator;
+		
+	}
+		
+	</script>
+	<form name="calcIp">
+		<table id="tabip">
+			<tr>
+				<td style="width: 200px"><p class="ipcalc">Adres IP: </p></td><td style="width: 240px"><input type="text" name="ip_first" value="193" size="2" maxlength="3"/>.<input type="text" name="ip_second" value="200" size="2" maxlength="3"/>.<input type="text" name="ip_third" value="46" size="2" maxlength="3"/>.<input type="text" name="ip_fourth" value="65" size="2" maxlength="3"/></td><td id="valid_ip" style="color: #a50000; width: 310px;"></td>
+			</tr>
+			<tr>
+				<td><p class="ipcalc">Maska sieci: </p></td><td><input type="text" name="mask_first" size="2" maxlength="3" value="255" />.<input type="text" name="mask_second" size="2" maxlength="3" value="255" />.<input type="text" name="mask_third" size="2" maxlength="3" value="255" />.<input type="text" name="mask_fourth" size="2" maxlength="3" value="0" /></td><td id="valid_mask" style="color: #a50000"></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td><td>&nbsp;</td><td><input type="button" value="Przelicz adresy" name="oblicz" style="padding: 5px;"/></td>
+			</tr>
+			<tr>
+				<td colspan="2" style="height: 40px; font-weight: bold;">Wyniki:</td>
+			</tr>
+			<tr style="font-weight: bold;">
+				<td></td><td>w kodzie dziesiętnym</td><td>binarnym</td>
+			</tr>
+			<tr>
+				<td><p class="ipcalc">Adres IP: </p></td><td><input type="text" name="adres_ip" size="16" readonly="readonly"/></td><td id="ipbin"></td>
+			</tr>
+			<tr>
+				<td><p class="ipcalc">Maska: </p></td><td><input type="text" name="mask" size="16" readonly="readonly"/></td><td id="maskbin"></td><td id="masklinks"></td>
+			</tr>
+			<tr>
+				<td><p class="ipcalc">Adres sieci: </p></td><td><input type="text" name="as" size="16" readonly="readonly"/></td><td id="asbin"></td>
+			</tr>
+			<tr>
+				<td><p class="ipcalc">Adres rozgłoszeniowy: </p></td><td><input type="text" name="broad" size="16" readonly="readonly"/></td><td id="brobin"></td>
+			</tr>
+			<tr id="spec_ip1">
+				<td><p class="ipcalc">Adres pierwszego hosta: </p></td><td><input type="text" name="host_first" size="16" readonly="readonly"/></td></td><td id="host1bin"></td>
+			</tr>
+			<tr id="spec_ip2">
+				<td><p class="ipcalc">Adres ostatniego hosta: </p></td><td><input type="text" name="host_last" size="16" readonly="readonly"/></td><td id="host2bin"></td>
+			</tr>
+			<tr>
+				<td><p class="ipcalc">Hostów w sieci: </p></td><td><input type="text" name="host_net" size="8" readonly="readonly"/></td>
+			</tr>
+		</table>
+	</form></div>
+	</div>
+	
+	
+
+	
+</div>
+
+</body>
+</html>
